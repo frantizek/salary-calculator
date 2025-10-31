@@ -132,77 +132,71 @@ class SalaryCalculator {
     const hoursPerWeek = parseInt(document.querySelector('input[name="hours"]:checked').value);
 
     // Calculate all salary periods
-    const salaryData = {
-      monthly: monthlySalary,
-      biweekly: monthlySalary / 2,
-      bimonthly: monthlySalary * 2,
-      quarterly: monthlySalary * 3,
-      semiannual: monthlySalary * 6,
-      annual: monthlySalary * 12
-    };
-
-    // Calculate hourly rate
-    // Assuming: 4.33 weeks per month average, 5 work days per week, 8 hours per day
+    // Base: 4.33 weeks per month average, 5 work days per week, 8 hours per day
     const hoursPerMonth = hoursPerWeek * 4.33;
     const hourlyRateMXN = monthlySalary / hoursPerMonth;
     const hourlyRateUSD = hourlyRateMXN / exchangeRate;
 
-    // Calculate daily rate (8 hours)
-    const dailyRateMXN = hourlyRateMXN * 8;
-    const dailyRateUSD = hourlyRateUSD * 8;
-
-    // Calculate weekly rate
-    const weeklyRateMXN = hourlyRateMXN * hoursPerWeek;
-    const weeklyRateUSD = hourlyRateUSD * hoursPerWeek;
-
-    // Build table data
+    // Build table data - SORTED BY TIME PERIOD (shortest to longest)
     const tableData = [
-      {
-        label: 'results.monthly',
-        mxn: salaryData.monthly,
-        usd: salaryData.monthly / exchangeRate
-      },
       {
         label: 'results.hourly',
         mxn: hourlyRateMXN,
-        usd: hourlyRateUSD
+        usd: hourlyRateUSD,
+        order: 1
       },
       {
         label: 'results.daily',
-        mxn: dailyRateMXN,
-        usd: dailyRateUSD
+        mxn: hourlyRateMXN * 8,
+        usd: (hourlyRateMXN * 8) / exchangeRate,
+        order: 2
       },
       {
         label: 'results.weekly',
-        mxn: weeklyRateMXN,
-        usd: weeklyRateUSD
+        mxn: hourlyRateMXN * hoursPerWeek,
+        usd: (hourlyRateMXN * hoursPerWeek) / exchangeRate,
+        order: 3
       },
       {
         label: 'results.biweekly',
-        mxn: salaryData.biweekly,
-        usd: salaryData.biweekly / exchangeRate
+        mxn: monthlySalary / 2,
+        usd: monthlySalary / 2 / exchangeRate,
+        order: 4
+      },
+      {
+        label: 'results.monthly',
+        mxn: monthlySalary,
+        usd: monthlySalary / exchangeRate,
+        order: 5
       },
       {
         label: 'results.bimonthly',
-        mxn: salaryData.bimonthly,
-        usd: salaryData.bimonthly / exchangeRate
+        mxn: monthlySalary * 2,
+        usd: (monthlySalary * 2) / exchangeRate,
+        order: 6
       },
       {
         label: 'results.quarterly',
-        mxn: salaryData.quarterly,
-        usd: salaryData.quarterly / exchangeRate
+        mxn: monthlySalary * 3,
+        usd: (monthlySalary * 3) / exchangeRate,
+        order: 7
       },
       {
         label: 'results.semiannual',
-        mxn: salaryData.semiannual,
-        usd: salaryData.semiannual / exchangeRate
+        mxn: monthlySalary * 6,
+        usd: (monthlySalary * 6) / exchangeRate,
+        order: 8
       },
       {
         label: 'results.annual',
-        mxn: salaryData.annual,
-        usd: salaryData.annual / exchangeRate
+        mxn: monthlySalary * 12,
+        usd: (monthlySalary * 12) / exchangeRate,
+        order: 9
       }
     ];
+
+    // Sort by order (already in correct order, but explicit for clarity)
+    tableData.sort((a, b) => a.order - b.order);
 
     // Render table
     this.renderResultsTable(tableData);
@@ -255,6 +249,7 @@ class SalaryCalculator {
       const labelCell = document.createElement('td');
       labelCell.setAttribute('data-i18n', item.label);
       labelCell.textContent = i18nManager.get(item.label);
+      labelCell.classList.add('label-cell');
       row.appendChild(labelCell);
 
       const mxnCell = document.createElement('td');

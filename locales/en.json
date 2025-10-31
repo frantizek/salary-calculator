@@ -1,0 +1,32 @@
+{
+  "title": "Salary Calculator",
+  "subtitle": "Calculate your hourly rate in MXN and USD",
+  "labels": {
+    "monthlySalary": "Monthly Salary (before taxes)",
+    "exchangeRate": "Exchange Rate (1 USD = ? MXN)",
+    "hoursPerWeek": "Hours per Week",
+    "hours40": "40 hours",
+    "hours48": "48 hours"
+  },
+  "buttons": {
+    "calculate": "Calculate",
+    "reset": "Reset",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
+  },
+  "results": {
+    "hourlyRate": "Hourly Rate",
+    "perHour": "per hour",
+    "mxn": "MXN",
+    "usd": "USD",
+    "dailyRate": "Daily Rate",
+    "weeklyRate": "Weekly Rate",
+    "annualSalary": "Annual Salary (net)"
+  },
+  "errors": {
+    "invalidSalary": "Please enter a valid salary",
+    "invalidExchange": "Please enter a valid exchange rate",
+    "requiredFields": "Please fill in all fields"
+  },
+  "language": "Language"
+}

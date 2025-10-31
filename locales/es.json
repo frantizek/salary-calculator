@@ -1,0 +1,32 @@
+{
+  "title": "Calculadora de Salario",
+  "subtitle": "Calcula tu tarifa horaria en MXN y USD",
+  "labels": {
+    "monthlySalary": "Salario Mensual (antes de impuestos)",
+    "exchangeRate": "Tipo de Cambio (1 USD = ? MXN)",
+    "hoursPerWeek": "Horas por Semana",
+    "hours40": "40 horas",
+    "hours48": "48 horas"
+  },
+  "buttons": {
+    "calculate": "Calcular",
+    "reset": "Reiniciar",
+    "darkMode": "Modo Oscuro",
+    "lightMode": "Modo Claro"
+  },
+  "results": {
+    "hourlyRate": "Tarifa Horaria",
+    "perHour": "por hora",
+    "mxn": "MXN",
+    "usd": "USD",
+    "dailyRate": "Tarifa Diaria",
+    "weeklyRate": "Tarifa Semanal",
+    "annualSalary": "Salario Anual (neto)"
+  },
+  "errors": {
+    "invalidSalary": "Por favor, ingresa un salario válido",
+    "invalidExchange": "Por favor, ingresa un tipo de cambio válido",
+    "requiredFields": "Por favor, completa todos los campos"
+  },
+  "language": "Idioma"
+}

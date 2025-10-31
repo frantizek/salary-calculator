@@ -127,42 +127,151 @@ class SalaryCalculator {
   calculate() {
     if (!this.validate()) return;
 
-    const salary = parseFloat(this.salary.value);
+    const monthlySalary = parseFloat(this.salary.value);
     const exchangeRate = parseFloat(this.exchangeRate.value);
-    const hours = parseInt(document.querySelector('input[name="hours"]:checked').value);
+    const hoursPerWeek = parseInt(document.querySelector('input[name="hours"]:checked').value);
 
-    // Calculate working hours per month (assuming 4.33 weeks per month average)
-    const weeklyHours = hours;
-    const monthlyHours = weeklyHours * 4.33;
+    // Calculate all salary periods
+    const salaryData = {
+      monthly: monthlySalary,
+      biweekly: monthlySalary / 2,
+      bimonthly: monthlySalary * 2,
+      quarterly: monthlySalary * 3,
+      semiannual: monthlySalary * 6,
+      annual: monthlySalary * 12
+    };
 
-    // Calculate hourly rate in MXN
-    const hourlyMXN = salary / monthlyHours;
-
-    // Calculate hourly rate in USD
-    const hourlyUSD = hourlyMXN / exchangeRate;
+    // Calculate hourly rate
+    // Assuming: 4.33 weeks per month average, 5 work days per week, 8 hours per day
+    const hoursPerMonth = hoursPerWeek * 4.33;
+    const hourlyRateMXN = monthlySalary / hoursPerMonth;
+    const hourlyRateUSD = hourlyRateMXN / exchangeRate;
 
     // Calculate daily rate (8 hours)
-    const dailyMXN = hourlyMXN * 8;
-    const dailyUSD = hourlyUSD * 8;
+    const dailyRateMXN = hourlyRateMXN * 8;
+    const dailyRateUSD = hourlyRateUSD * 8;
 
     // Calculate weekly rate
-    const weeklyMXN = hourlyMXN * weeklyHours;
-    const weeklyUSD = hourlyUSD * weeklyHours;
+    const weeklyRateMXN = hourlyRateMXN * hoursPerWeek;
+    const weeklyRateUSD = hourlyRateUSD * hoursPerWeek;
 
-    // Display results
-    document.getElementById('mxnHourly').textContent = this.formatCurrency(hourlyMXN, 2);
-    document.getElementById('mxnDaily').textContent = this.formatCurrency(dailyMXN, 2);
-    document.getElementById('mxnWeekly').textContent = this.formatCurrency(weeklyMXN, 2);
+    // Build table data
+    const tableData = [
+      {
+        label: 'results.monthly',
+        mxn: salaryData.monthly,
+        usd: salaryData.monthly / exchangeRate
+      },
+      {
+        label: 'results.hourly',
+        mxn: hourlyRateMXN,
+        usd: hourlyRateUSD
+      },
+      {
+        label: 'results.daily',
+        mxn: dailyRateMXN,
+        usd: dailyRateUSD
+      },
+      {
+        label: 'results.weekly',
+        mxn: weeklyRateMXN,
+        usd: weeklyRateUSD
+      },
+      {
+        label: 'results.biweekly',
+        mxn: salaryData.biweekly,
+        usd: salaryData.biweekly / exchangeRate
+      },
+      {
+        label: 'results.bimonthly',
+        mxn: salaryData.bimonthly,
+        usd: salaryData.bimonthly / exchangeRate
+      },
+      {
+        label: 'results.quarterly',
+        mxn: salaryData.quarterly,
+        usd: salaryData.quarterly / exchangeRate
+      },
+      {
+        label: 'results.semiannual',
+        mxn: salaryData.semiannual,
+        usd: salaryData.semiannual / exchangeRate
+      },
+      {
+        label: 'results.annual',
+        mxn: salaryData.annual,
+        usd: salaryData.annual / exchangeRate
+      }
+    ];
 
-    document.getElementById('usdHourly').textContent = this.formatCurrency(hourlyUSD, 2);
-    document.getElementById('usdDaily').textContent = this.formatCurrency(dailyUSD, 2);
-    document.getElementById('usdWeekly').textContent = this.formatCurrency(weeklyUSD, 2);
+    // Render table
+    this.renderResultsTable(tableData);
 
     // Show results section
     this.resultsSection.classList.remove('hidden');
     this.resultsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
     this.saveData();
+  }
+
+  renderResultsTable(data) {
+    const tableContainer = document.getElementById('resultsTableContainer');
+    tableContainer.innerHTML = '';
+
+    // Create table
+    const table = document.createElement('table');
+    table.className = 'results-table';
+
+    // Create header
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    
+    const headerLabel = document.createElement('th');
+    headerLabel.setAttribute('data-i18n', 'results.parameter');
+    headerLabel.textContent = i18nManager.get('results.parameter');
+    headerRow.appendChild(headerLabel);
+
+    const headerMXN = document.createElement('th');
+    headerMXN.setAttribute('data-i18n', 'results.valueMXN');
+    headerMXN.textContent = i18nManager.get('results.valueMXN');
+    headerRow.appendChild(headerMXN);
+
+    const headerUSD = document.createElement('th');
+    headerUSD.setAttribute('data-i18n', 'results.valueUSD');
+    headerUSD.textContent = i18nManager.get('results.valueUSD');
+    headerRow.appendChild(headerUSD);
+
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Create body
+    const tbody = document.createElement('tbody');
+    data.forEach((item, index) => {
+      const row = document.createElement('tr');
+      if (index % 2 === 0) {
+        row.classList.add('striped');
+      }
+
+      const labelCell = document.createElement('td');
+      labelCell.setAttribute('data-i18n', item.label);
+      labelCell.textContent = i18nManager.get(item.label);
+      row.appendChild(labelCell);
+
+      const mxnCell = document.createElement('td');
+      mxnCell.textContent = this.formatCurrency(item.mxn, 2);
+      mxnCell.classList.add('number');
+      row.appendChild(mxnCell);
+
+      const usdCell = document.createElement('td');
+      usdCell.textContent = this.formatCurrency(item.usd, 2);
+      usdCell.classList.add('number');
+      row.appendChild(usdCell);
+
+      tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    tableContainer.appendChild(table);
   }
 
   formatCurrency(value, decimals = 2) {

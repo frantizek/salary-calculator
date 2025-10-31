@@ -3,12 +3,12 @@
 A bilingual salary calculator that converts monthly salary to hourly, daily, weekly, and annual rates in both MXN and USD.
 
 ## Features
-🌍 Bilingual (Spanish/English)
-🌙 Dark/Light mode
-📱 Mobile responsive
-💾 Local storage persistence
-📊 Comprehensive salary breakdown
-⚡ No dependencies
+- 🌍 Bilingual (Spanish/English)
+- 🌙 Dark/Light mode
+- 📱 Mobile responsive
+- 💾 Local storage persistence
+- 📊 Comprehensive salary breakdown
+- ⚡ No dependencies
 
 ## Usage
 Visit: https://frantizek.github.io/salary-calculator/
@@ -110,21 +110,23 @@ salary-calculator/
 └── .gitignore      # Git ignore rules
 ```
 
-Technologies
-HTML5 - Semantic markup
-CSS3 - Custom Properties (CSS Variables) for theming
-Vanilla JavaScript - No frameworks or dependencies
-Local Storage API - Persistent data storage
-i18n System - Custom translation manager
-Browser Support
-Chrome/Edge 90+
-Firefox 88+
-Safari 14+
-Mobile browsers (iOS Safari, Chrome Mobile)
-Internationalization (i18n)
+## Technologies
+* **HTML5** - Semantic markup
+* **CSS3** - Custom Properties (CSS Variables) for theming
+* **Vanilla JavaScript** - No frameworks or dependencies
+* **Local Storage API** - Persistent data storage
+* **i18n System** - Custom translation manager
+
+## Browser Support
+* Chrome/Edge 90+
+* Firefox 88+
+* Safari 14+
+* Mobile browsers (iOS Safari, Chrome Mobile)
+
+## Internationalization (i18n)
 The app supports multiple languages through JSON translation files:
 
-Spanish (es.json)
+### Spanish (es.json)
 ```json
 {
 "title": "Calculadora de Salario",
@@ -135,7 +137,7 @@ Spanish (es.json)
 }
 ```
 
-English (en.json)
+### English (en.json)
 ```json
 {
 "title": "Salary Calculator",
@@ -146,15 +148,16 @@ English (en.json)
 }
 ```
 
-Adding a New Language
-Create `locales/[lang-code].json`
-Add all translation keys
-Add option to language select in `index.html`
-Reload app
-Theme System
+### Adding a New Language
+1. Create `locales/[lang-code].json` 
+2. Add all translation keys
+3. Add option to language select in `index.html`
+4. Reload app
+
+## Theme System
 The app uses CSS Custom Properties for theme switching:
 
-Light Mode (Default)
+### Light Mode (Default)
 ```css
 --color-bg: #f8f9fa;
 --color-surface: #ffffff;
@@ -162,7 +165,7 @@ Light Mode (Default)
 --color-primary: #2563eb;
 ```
 
-Dark Mode
+### Dark Mode
 ```css
 --color-bg: #1a1a1a;
 --color-surface: #2d2d2d;
@@ -175,12 +178,13 @@ Toggle with button or programmatically:
 document.documentElement.setAttribute(`data-theme`, `dark`);
 ```
 
-Local Storage
+## Local Storage
 The app persists:
 
-`language` - Selected language (es/en)
-`theme` - Selected theme (light/dark)
-`calculatorData` - Last entered values
+* `language` - Selected language (es/en)
+* `theme` - Selected theme (light/dark)
+* `calculatorData` - Last entered values
+
 ```javascript
 // Clear all stored data
 localStorage.clear();
@@ -189,30 +193,33 @@ localStorage.clear();
 localStorage.removeItem(`calculatorData`);
 ```
 
-Features Breakdown
-Input Validation
+## Features Breakdown
+### Input Validation
 ✅ Salary must be > 0
 ✅ Exchange rate must be > 0
 ✅ Clear error messages in selected language
 ✅ Prevents invalid calculations
-Results Table
+### Results Table
 ✅ 9 salary periods
 ✅ Both MXN and USD columns
 ✅ Striped rows for readability
 ✅ Hover effects
 ✅ Responsive on mobile
-User Experience
+### User Experience
 ✅ Enter key triggers calculation
 ✅ Auto-save form data
 ✅ Smooth scrolling to results
 ✅ Reset button clears everything
 ✅ Language changes update entire UI
-Development
-Prerequisites
-GitHub account
-Codespaces (free tier)
-Modern web browser
-Quick Start
+
+## Development
+### Prerequisites
+* GitHub account
+* Codespaces (free tier)
+* Modern web browser
+
+### Quick Start
+
 ```bash
 
 Clone repository
@@ -223,45 +230,48 @@ Open in Codespaces
 Or simply open index.html in browser
 ```
 
-Making Changes
-Edit files in Codespaces
-Files auto-save
-Test in browser
-Commit changes
-Push to GitHub
-GitHub Pages auto-deploys
+## Making Changes
+1. Edit files in Codespaces
+2. Files auto-save
+3. Test in browser
+4. Commit changes
+5. Push to GitHub
+6. GitHub Pages auto-deploys
 ```bash
 git add .
 git commit -m "Description of changes"
 git push origin main
 ```
 
-Performance
-Bundle Size: < 50 KB (HTML + CSS + JS combined)
-Load Time: < 1 second
-No external dependencies: Pure vanilla stack
-Offline Capable: Works without internet after first load
-Accessibility
+## Performance
+* **Bundle Size:** < 50 KB (HTML + CSS + JS combined)
+* **Load Time:** < 1 second
+* **No external dependencies:** Pure vanilla stack
+* **Offline Capable:** Works without internet after first load
+
+## Accessibility
 ✅ Semantic HTML5 elements
 ✅ ARIA labels on buttons
 ✅ Keyboard navigation support
 ✅ Color contrast compliant
 ✅ Mobile touch targets (44×44px minimum)
-Future Enhancements
- Add more currency pairs
- Export results to PDF
- Copy to clipboard functionality
- Tax calculations option
- Historical exchange rates
- Multi-currency comparison
- PWA support (offline + mobile app)
-License
+
+## Future Enhancements
+- [] Add more currency pairs
+- [] Export results to PDF
+- [] Copy to clipboard functionality
+- [] Tax calculations option
+- [] Historical exchange rates
+- [] Multi-currency comparison
+- [] PWA support (offline + mobile app)
+
+## License
 MIT License - Feel free to use, modify, and distribute
 
-Author
+## Author
 Created with ❤️ for freelancers and contractors in Mexico
 
-Contributing
+## Contributing
 Found a bug or have a suggestion?
 
 Create an issue on GitHub
@@ -286,5 +296,5 @@ Weekly	$24,165.71	$1,307.67
 Monthly	$105,000.00	$5,681.82
 Annual	$1,260,000.00	$68,181.82
 
-Last Updated: 2024
+Last Updated: October 2025
 Version: 1.0.0

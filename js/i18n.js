@@ -13,10 +13,14 @@ class i18n {
 
   async loadTranslations(lang) {
     try {
-      const response = await fetch(`./locales/${lang}.json`);
+      const response = await fetch('./locales/' + lang + '.json');
+      if (!response.ok) {
+        throw new Error('Failed to load ' + lang + ' translations');
+      }
       this.translations[lang] = await response.json();
+      console.log('Loaded ' + lang + ' translations');
     } catch (error) {
-      console.error(`Error loading ${lang} translations:`, error);
+      console.error('Error loading ' + lang + ' translations:', error);
     }
   }
 

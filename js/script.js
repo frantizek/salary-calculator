@@ -83,7 +83,7 @@ class SalaryCalculator {
       const data = JSON.parse(saved);
       this.salary.value = data.salary || '';
       this.exchangeRate.value = data.exchangeRate || '';
-      document.querySelector(`input[name="hours"][value="${data.hours}"]`).checked = true;
+      document.querySelector('input[name="hours"][value="' + data.hours + '"]').checked = true;
     }
   }
 
@@ -131,8 +131,7 @@ class SalaryCalculator {
     const exchangeRate = parseFloat(this.exchangeRate.value);
     const hoursPerWeek = parseInt(document.querySelector('input[name="hours"]:checked').value);
 
-    // Calculate all salary periods
-    // Base: 4.33 weeks per month average, 5 work days per week, 8 hours per day
+    // Calculate working hours per month (4.33 weeks average)
     const hoursPerMonth = hoursPerWeek * 4.33;
     const hourlyRateMXN = monthlySalary / hoursPerMonth;
     const hourlyRateUSD = hourlyRateMXN / exchangeRate;
@@ -195,7 +194,7 @@ class SalaryCalculator {
       }
     ];
 
-    // Sort by order (already in correct order, but explicit for clarity)
+    // Sort by order
     tableData.sort((a, b) => a.order - b.order);
 
     // Render table

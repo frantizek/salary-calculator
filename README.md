@@ -2,13 +2,24 @@
 
 A bilingual salary calculator that converts monthly salary to hourly, daily, weekly, and annual rates in both MXN and USD.
 
-## Features
-- 🌍 Bilingual (Spanish/English)
-- 🌙 Dark/Light mode
-- 📱 Mobile responsive
-- 💾 Local storage persistence
-- 📊 Comprehensive salary breakdown
-- ⚡ No dependencies
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
+![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
+
+## Table of Contents
+- [Features](#features)
+- [Usage](#usage)
+- [Application Flow](#application-flow)
+- [Calculation Formula](#calculation-formula)
+- [Project Structure](#project-structure)
+- [Development](#development)
+- [Contributing](#contributing)
+
+
+## ✨ Features
+🌍 **Bilingual** (Spanish/English) | 🌙 **Dark/Light mode** | 📱 **Mobile responsive**  
+💾 **Auto-save** | 📊 **9 salary periods** | ⚡ **No dependencies** | 🎯 **Offline capable**
+
 
 ## Usage
 Visit: https://frantizek.github.io/salary-calculator/
@@ -19,6 +30,7 @@ Clone the repo
 Open `index.html` in browser
 Enter your salary and exchange rate
 Click Calculate
+
 
 ## Application Flow
 
@@ -63,6 +75,7 @@ graph TD
     style J fill:#8b5cf6,stroke:#333,stroke-width:2px,color:#fff
 ```
 
+
 ## Salary Periods
 - Hourly (Por Hora)
 - Daily (Por Día)
@@ -73,6 +86,7 @@ graph TD
 - Quarterly (Trimestral)
 - Semiannual (Semestral)
 - Annual (Anual)
+
 
 ## Calculation Formula
 
@@ -94,6 +108,7 @@ Semiannual = Monthly Salary × 6
 Annual = Monthly Salary × 12
 ```
 
+
 ## Project Structure
 ```
 salary-calculator/
@@ -110,6 +125,7 @@ salary-calculator/
 └── .gitignore      # Git ignore rules
 ```
 
+
 ## Technologies
 * **HTML5** - Semantic markup
 * **CSS3** - Custom Properties (CSS Variables) for theming
@@ -117,11 +133,13 @@ salary-calculator/
 * **Local Storage API** - Persistent data storage
 * **i18n System** - Custom translation manager
 
+
 ## Browser Support
 * Chrome/Edge 90+
 * Firefox 88+
 * Safari 14+
 * Mobile browsers (iOS Safari, Chrome Mobile)
+
 
 ## Internationalization (i18n)
 The app supports multiple languages through JSON translation files:
@@ -154,6 +172,7 @@ The app supports multiple languages through JSON translation files:
 3. Add option to language select in `index.html`
 4. Reload app
 
+
 ## Theme System
 The app uses CSS Custom Properties for theme switching:
 
@@ -178,6 +197,7 @@ Toggle with button or programmatically:
 document.documentElement.setAttribute(`data-theme`, `dark`);
 ```
 
+
 ## Local Storage
 The app persists:
 
@@ -192,6 +212,7 @@ localStorage.clear();
 // Clear specific item
 localStorage.removeItem(`calculatorData`);
 ```
+
 
 ## Features Breakdown
 ### Input Validation
@@ -213,6 +234,7 @@ localStorage.removeItem(`calculatorData`);
 - ✅ Smooth scrolling to results
 - ✅ Reset button clears everything
 - ✅ Language changes update entire UI
+
 
 ## Development
 ### Prerequisites

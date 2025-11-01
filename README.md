@@ -195,22 +195,24 @@ localStorage.removeItem(`calculatorData`);
 
 ## Features Breakdown
 ### Input Validation
-✅ Salary must be > 0
-✅ Exchange rate must be > 0
-✅ Clear error messages in selected language
-✅ Prevents invalid calculations
+- ✅ Salary must be > 0
+- ✅ Exchange rate must be > 0
+- ✅ Clear error messages in selected language
+- ✅ Prevents invalid calculations
+
 ### Results Table
-✅ 9 salary periods
-✅ Both MXN and USD columns
-✅ Striped rows for readability
-✅ Hover effects
-✅ Responsive on mobile
+- ✅ 9 salary periods
+- ✅ Both MXN and USD columns
+- ✅ Striped rows for readability
+- ✅ Hover effects
+- ✅ Responsive on mobile
+
 ### User Experience
-✅ Enter key triggers calculation
-✅ Auto-save form data
-✅ Smooth scrolling to results
-✅ Reset button clears everything
-✅ Language changes update entire UI
+- ✅ Enter key triggers calculation
+- ✅ Auto-save form data
+- ✅ Smooth scrolling to results
+- ✅ Reset button clears everything
+- ✅ Language changes update entire UI
 
 ## Development
 ### Prerequisites
@@ -250,20 +252,20 @@ git push origin main
 * **Offline Capable:** Works without internet after first load
 
 ## Accessibility
-✅ Semantic HTML5 elements
-✅ ARIA labels on buttons
-✅ Keyboard navigation support
-✅ Color contrast compliant
-✅ Mobile touch targets (44×44px minimum)
+- ✅ Semantic HTML5 elements
+- ✅ ARIA labels on buttons
+- ✅ Keyboard navigation support
+- ✅ Color contrast compliant
+- ✅ Mobile touch targets (44×44px minimum)
 
 ## Future Enhancements
-- [] Add more currency pairs
-- [] Export results to PDF
-- [] Copy to clipboard functionality
-- [] Tax calculations option
-- [] Historical exchange rates
-- [] Multi-currency comparison
-- [] PWA support (offline + mobile app)
+- [ ] Add more currency pairs
+- [ ] Export results to PDF
+- [ ] Copy to clipboard functionality
+- [ ] Tax calculations option
+- [ ] Historical exchange rates
+- [ ] Multi-currency comparison
+- [ ] PWA support (offline + mobile app)
 
 ## License
 MIT License - Feel free to use, modify, and distribute
@@ -274,9 +276,10 @@ Created with ❤️ for freelancers and contractors in Mexico
 ## Contributing
 Found a bug or have a suggestion?
 
-Create an issue on GitHub
-Fork the repository
-Create a pull request
+1. Create an issue on GitHub
+2. Fork the repository
+3. Create a pull request
+
 Let's improve it together!
 
 ## Example Usage
@@ -289,12 +292,13 @@ Let's improve it together!
 
 ### Output:
 
-Period	MXN	USD
-Hourly	$656.25	$35.51
-Daily	$3,500.00	$189.39
-Weekly	$24,165.71	$1,307.67
-Monthly	$105,000.00	$5,681.82
-Annual	$1,260,000.00	$68,181.82
+| Period | MXN | USD |
+|--------|----:|----:|
+| Hourly | $656.25 | $35.51 |
+| Daily | $3,500.00 | $189.39 |
+| Weekly | $24,165.71 | $1,307.67 |
+| Monthly | $105,000.00 | $5,681.82 |
+| Annual | $1,260,000.00 | $68,181.82 |
 
 Last Updated: October 2025
 Version: 1.0.0
